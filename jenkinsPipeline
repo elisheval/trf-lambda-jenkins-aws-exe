@@ -1,0 +1,39 @@
+pipeline {
+
+    agent any
+    stages {
+        stage('Init') {
+          steps {
+            dir('terraform'){
+              echo 'Terraform init in progress'
+              sh '''
+                terraform init
+              '''
+            }
+          }
+        }
+
+        stage('Plan') {
+          steps {
+            dir('terraform'){
+              echo 'Terraform Plan in progress'
+              sh '''
+                terraform plan
+              '''
+            }
+          }
+        }
+
+      stage('Apply and deploy') {
+        steps {
+          dir('terraform'){
+            echo 'Terraform Plan in progress'
+            sh '''
+              terraform apply -auto-approve
+            '''
+          }
+        }
+      }
+    }
+
+}
