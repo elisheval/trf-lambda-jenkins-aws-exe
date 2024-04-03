@@ -26,7 +26,7 @@ resource "aws_apigatewayv2_stage" "dev" {
 }
 
 resource "aws_cloudwatch_log_group" "main_api_gw" {
-  name = "/aws/api-gw/${aws_apigatewayv2_api.lambda_api_gw.name}"
+  name = "/aws/api-gw-2/${aws_apigatewayv2_api.lambda_api_gw.name}"
   retention_in_days = 30
 }
 
